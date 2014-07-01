@@ -1,0 +1,51 @@
+* Components
+** event queue
+*** events
+ordered by time, make sure for each device there is only one event for a given time
+**** device id
+visitor_uuid to be used in the beacon event
+**** position
+x,y
+**** time
+seconds relative to epoch
+*** adding to the queue
+new events inserted into sorted position
+maybe if you had a queue per device you could parallelize...
+also possible to fill queue w/ noop events to make simulation logic simpler...tradeoff is space
+
+weakness if events are inserted with time before events that have already been processed
+**** manually
+
+**** live mode
+
+**** via ui
+** simulator
+*** beacon
+**** position
+**** uuid
+**** major
+**** minor
+**** proximity radius
+*** device
+**** position
+**** time
+**** beacons in range
+dictionary with key beacon id value number of didRange signals sent
+**** visitor_uuid
+**** previous position
+**** previous time
+** simulator-display
+* Program Flow
+** for each event in the queue
+*** update the device's position
+*** determine and send appropriate signals to firebase for device
+depends on previous time value for this
+**** for each beacon in range since last time with signals sent < 5
+***** compute and send relevant didRangeBeacons
+**** for each beacon object
+number of beacons relative to devices is low
+***** compute distance to beacon
+***** if distance to device is in range and not in beacons in range
+add entry to beacons in range with value 0
+***** if distance to device is out of range and in beacons in range
+send didExitRange
