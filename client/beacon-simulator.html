@@ -1,0 +1,100 @@
+<head>
+  <title>Beacon Simulator</title>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Welcome to the iBeacon Simulator!</h1>
+		<div class="row">
+			{{> simulationDisplay}}
+		</div>
+		<div class="row">
+			{{> configuration}}
+		</div>
+	</div>
+</body>
+
+<template name="configuration">
+	<div class="span12">
+		<div id="configuration">
+			<h3>Enter a list of events below as a string that can be parsed into JSON.</h3>
+			<div>
+				<textarea id="events-input">{{jsonEvents}}</textarea>
+			</div>
+			<h3>Enter a list of beacons below as a string that can be parsed into JSON.</h3>
+			<div>
+				<textarea id="beacons-input">{{jsonBeacons}}</textarea>
+			</div>
+			<div>
+				<button id="submit-configuration" class="btn">Submit Events</button>
+			</div>
+		</div>
+
+	</div>
+</template>
+
+
+<template name="simulationDisplay">
+	<div class="span12">
+		<div id="simulation-display">
+			{{#each devices}}
+			{{> device}}
+			{{/each}}
+			{{#each beacons}}
+			{{> beacon}}
+			{{/each}}
+		</div>
+		<div class="row">
+			<small id="simulation-time" class="span12">
+				Simulation Start: {{simulationEpoch}}
+				<span class="pull-right">Simulation Time: +{{simulationTime}}</span>
+			</small>
+		</div>
+		<div class="row top-buffer">
+			<div class="span12">
+				<button id="process-events" class="btn btn-primary">Process Events</button>
+				<button id="process-single-event" class="btn">Process Single Event</button>
+			</div>
+		</div>
+		<div id="signals-sent" class="row top-buffer">
+			<div class="span6">
+			<ul class="well unstyled">
+				Send Order
+				{{#each signalsSent}}
+				<li>
+					{{uuid}}
+					{{visitor_uuid}}
+					{{create_at}}
+					{{type}}
+				</li>
+				{{/each}}
+			</ul>
+			</div>
+			<div class="span6">
+			<ul class="well  unstyled">
+				Timestamp Order
+				{{#each orderedSignalsSent}}
+				<li>
+					{{uuid}}
+					{{visitor_uuid}}
+					{{create_at}}
+					{{type}}
+				</li>
+				{{/each}}
+			</ul>
+			</div>
+		</div>
+	</div>
+</template>
+
+<template name="device">
+	<div id="{{uuid}}" class="device positionable">
+		{{uuid}}
+	</div>
+</template>
+
+<template name="beacon">
+	<div id="{{uuid}}" class="beacon positionable">
+		{{uuid}}
+	</div>
+</template>

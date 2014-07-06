@@ -1,0 +1,28 @@
+#simulation-display {
+		height: 65vh;
+		border: 1px solid black;
+		position: relative;
+}
+
+#events-input {
+		height: 20vh;
+		width: 100%;
+}
+
+#beacons-input {
+		height: 10vh;
+		width: 100%;
+}
+
+.positionable {
+		position: absolute;
+}
+
+.beacon {
+		border-radius: 50%;
+		border: 1px solid red;
+}
+
+.top-buffer {
+		margin-top: 15px;
+}
