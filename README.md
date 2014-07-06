@@ -25,6 +25,8 @@ Each event represents where a device has moved to at the given time.  The format
 
 #### Beacon JSON Format
 Each beacon json represents the settings for a particular beacon. The format is:
+
+```JSON
 {
 	"uuid": "String", // beacon's proximity uuid
 	"major": Number, // beacon's major
@@ -32,6 +34,7 @@ Each beacon json represents the settings for a particular beacon. The format is:
 	"proximityRadius": Number, // distance from beacon where mobile devices start to send signals
 	"position": {"x": Number, "y": Number} // location of the beacon where x and y have a range [0, 99]
 }
+```
 
 ### Execution
 Once the simulator has been configured it can be run one event at a time (by clicking on the "Process Single Event" button) or all events at once (by clicking on the "Process Events" button).
