@@ -15,7 +15,7 @@ You configure the simulator by setting both the events to be simulated as well a
 #### Event JSON Format
 Each event represents where a device has moved to at the given time.  The format is:
 
-```JSON
+```Javascript
 {
 	"uuid": "String", // unique id of the device
 	"position":  {"x": Number, "y": Number}, // location of the device where x and y have a range [0, 99]
@@ -26,7 +26,7 @@ Each event represents where a device has moved to at the given time.  The format
 #### Beacon JSON Format
 Each beacon json represents the settings for a particular beacon. The format is:
 
-```JSON
+```Javascript
 {
 	"uuid": "String", // beacon's proximity uuid
 	"major": Number, // beacon's major
